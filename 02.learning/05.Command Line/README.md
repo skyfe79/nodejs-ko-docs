@@ -1,7 +1,7 @@
 # 05.Command Line
 
-- [Node.js에서 커맨드라인 입력 받기](Node.js%20%E2%80%94%20Accept%20input%20from%20the%20command%20line%20in%20Node.js.md)
-- [Node.js에서 환경 변수 읽는 방법](Node.js%20%E2%80%94%20How%20to%20read%20environment%20variables%20from%20Node.js.md)
-- [How to use the Node.js REPL](Node.js%20%E2%80%94%20How%20to%20use%20the%20Node.js%20REPL.md)
-- [Output to the command line using Node.js](Node.js%20%E2%80%94%20Output%20to%20the%20command%20line%20using%20Node.js.md)
-- [커맨드라인에서 Node.js 스크립트 실행하기](Node.js%20%E2%80%94%20Run%20Node.js%20scripts%20from%20the%20command%20line.md)
+- [커맨드라인에서 Node.js 스크립트 실행하기](01.run-nodejs-scripts-from-the-command-line.md)
+- [Node.js에서 환경 변수를 읽는 방법](02.how-to-read-environment-variables-from-nodejs.md)
+- [Node.js REPL 사용 가이드](03.how-to-use-the-nodejs-repl.md)
+- [Node.js를 사용한 커맨드라인 출력 ](04.output-to-the-command-line-using-nodejs.md)
+- [Node.js에서 커맨드라인 입력 처리하기](05.accept-input-from-the-command-line-in-nodejs.md)
