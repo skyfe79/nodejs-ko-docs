@@ -1,53 +1,36 @@
-# Table of Contents
+# 테스트에서의 목킹
 
-- [테스트에서의 모킹](#테스트에서의-모킹)
-  - [모의 객체 사용 시기와 사용하지 말아야 할 때](#모의-객체-사용-시기와-사용하지-말아야-할-때)
-    - [자체 코드](#자체-코드)
-      - [왜 필요한가](#왜-필요한가)
-      - [왜 하지 않는가](#왜-하지-않는가)
-    - [외부 코드](#외부-코드)
-      - [왜](#왜)
-      - [왜 사용하지 않을까](#왜-사용하지-않을까)
-    - [외부 시스템](#외부-시스템)
-  - [What to mock](#what-to-mock)
-    - [모듈 + 유닛](#모듈--유닛)
-    - [APIs](#apis)
-    - [시간](#시간)
+목킹은 실제 객체를 모방하는 가짜 객체를 만드는 기법이다. 일반적으로 'A라는 입력이 들어오면 B라는 동작을 수행한다'는 방식으로 동작을 제어한다. 이를 통해 테스트에서 불필요한 요소를 제거하고 중요한 부분만 검증할 수 있다. '목(mock)'과 '스텁(stub)'은 엄밀히 말하면 서로 다른 '테스트 대역(test double)'이다. 스텁은 호출 여부만 추적하는 단순한 대체물이며, 목은 스텁에 가짜 구현을 추가한 것이다. 이 문서에서는 이러한 차이점은 중요하지 않으므로, 스텁도 목으로 통칭한다.
 
-# [테스트에서의 모킹](https://nodejs.org/en/learn/test-runner/introduction#mocking-in-tests)
+테스트는 결정론적이어야 한다. 즉, 실행 순서나 횟수에 관계없이 항상 동일한 결과가 나와야 한다. 적절한 설정과 목킹을 통해 이를 달성할 수 있다.
 
-모킹은 가짜 객체를 만드는 방법입니다. 일반적으로 `'a'일 때, 'b'를 실행한다`는 방식으로 제어합니다. 이 방법은 복잡한 부분을 줄이고 "중요하지 않은" 요소를 통제하기 위해 사용됩니다. "목(mock)"과 "스텁(stub)"은 기술적으로 다른 종류의 "테스트 더블(test doubles)"입니다. 궁금한 독자를 위해 설명하자면, 스텁은 아무런 동작을 하지 않지만 호출을 추적하는 대체물입니다. 목은 스텁에 가짜 구현(`'a'일 때, 'b'를 실행한다`)이 추가된 것입니다. 이 문서에서는 두 개념의 차이가 중요하지 않으므로 스텁도 목으로 통칭합니다.
+Node.js는 다양한 코드 조각을 목킹하는 여러 방법을 제공한다.
 
-테스트는 결정적(deterministic)이어야 합니다. 어떤 순서로든, 몇 번을 실행하든 항상 동일한 결과를 내야 합니다. 적절한 설정과 모킹이 이를 가능하게 합니다.
+이 문서에서는 다음과 같은 테스트 유형을 다룬다:
 
-Node.js는 다양한 코드를 모킹할 수 있는 여러 방법을 제공합니다.
+| 유형 | 설명 | 예시 | 목킹 대상 |
+| :--- | :--- | :--- | :--- |
+| 단위 테스트 | 분리 가능한 가장 작은 코드 단위 | `const sum = (a, b) => a + b` | 자체 코드, 외부 코드, 외부 시스템 |
+| 컴포넌트 테스트 | 단위 + 의존성 | `const arithmetic = (op = sum, a, b) => ops[op](a, b)` | 외부 코드, 외부 시스템 |
+| 통합 테스트 | 여러 컴포넌트의 연동 | - | 외부 코드, 외부 시스템 |
+| 엔드투엔드(e2e) 테스트 | 앱 + 외부 데이터 저장소, 전달 시스템 등 | 실제 외부 시스템과 연결된 앱을 Playwright 에이전트와 같은 가상 사용자가 직접 사용 | 없음 (목킹 하지 않음) |
 
-이 글에서는 다음과 같은 테스트 유형을 다룹니다:
+목킹의 사용 시점과 비사용 시점에 대해서는 여러 관점이 있으며, 이에 대한 개요는 아래에서 설명한다.
 
-| 타입 | 설명 | 예제 | 모킹 대상 |
-| --- | --- | --- | --- |
-| 유닛 테스트 | 격리할 수 있는 가장 작은 코드 단위 | `const sum = (a, b) => a + b` | 내부 코드, 외부 코드, 외부 시스템 |
-| 컴포넌트 테스트 | 유닛 + 의존성 | `const arithmetic = (op = sum, a, b) => ops[op](a, b)` | 외부 코드, 외부 시스템 |
-| 통합 테스트 | 컴포넌트 간의 조합 | \- | 외부 코드, 외부 시스템 |
-| 종단 간 테스트(e2e) | 앱 + 외부 데이터 저장소, 전달 등 | 실제 외부 시스템에 연결된 앱을 사용하는 가짜 사용자(예: Playwright 에이전트) | 없음(모킹하지 않음) |
+## 목킹이 필요한 경우와 불필요한 경우
 
-모킹을 언제 사용하고 언제 사용하지 않을지에 대한 다양한 의견이 있습니다. 주요 내용은 아래와 같습니다.
+목킹의 주요 대상은 다음 세 가지다:
 
+- 자체 코드
+- 외부 코드
+- 외부 시스템
 
-## [모의 객체 사용 시기와 사용하지 말아야 할 때](https://nodejs.org/en/learn/test-runner/introduction#when-and-not-to-mock)
+### 자체 코드
 
-모의 객체를 사용할 주요 대상은 크게 세 가지로 나눌 수 있습니다:
-
--   **자체 코드**
--   **외부 코드**
--   **외부 시스템**
-
-
-### [자체 코드](https://nodejs.org/en/learn/test-runner/introduction#own-code)
-
-이 부분은 여러분의 프로젝트가 직접 제어하는 코드입니다.
+프로젝트에서 직접 제어하는 코드를 의미한다.
 
 ```javascript
+// your-project/main.mjs
 import foo from './foo.mjs';
 
 export function main() {
@@ -55,26 +38,24 @@ export function main() {
 }
 ```
 
-여기서 `foo`는 `main` 함수의 "자체 코드" 의존성입니다.
+여기서 `foo`는 `main`의 "자체 코드" 의존성이다.
 
+#### 목킹이 필요한 이유
 
-#### [왜 필요한가](https://nodejs.org/en/learn/test-runner/introduction#why)
+`main`의 순수한 단위 테스트를 위해서는 `foo`를 목킹해야 한다. `main`의 동작만 테스트하는 것이 목적이지, `main`과 `foo`의 통합을 테스트하는 것이 아니기 때문이다.
 
-`main` 함수에 대한 진정한 단위 테스트를 위해서는 `foo`를 모의(mock)해야 합니다. 여러분이 테스트하려는 것은 `main`이 제대로 동작하는지 확인하는 것이지, `main`과 `foo`가 함께 동작하는지 확인하는 것이 아닙니다. (그것은 다른 테스트입니다.)
+#### 목킹이 불필요한 이유
 
+`foo`가 단순하고, 잘 테스트되어 있으며, 자주 변경되지 않는 경우에는 목킹이 오히려 번거로울 수 있다.
 
-#### [왜 하지 않는가](https://nodejs.org/en/learn/test-runner/introduction#why-not)
+`foo`를 목킹하지 않으면 더 실제적인 테스트가 가능하고 `foo`의 테스트 커버리지도 높일 수 있다. 하지만 이는 문제 발견을 어렵게 만들 수 있다. `foo`에 문제가 생기면 다른 많은 테스트도 실패하게 되어, 실제 문제의 원인을 찾기가 어려워진다.
 
-`foo`를 모킹(mocking)하는 것은 그럴 가치보다 더 많은 문제를 일으킬 수 있습니다. 특히 `foo`가 단순하고, 잘 테스트되었으며, 자주 업데이트되지 않는 경우에는 더욱 그렇습니다.
+### 외부 코드
 
-`foo`를 모킹하지 않는 것이 더 나을 수 있습니다. 이는 더 진정성 있는 테스트를 가능하게 하고, `foo`의 커버리지를 높이기 때문입니다(`main`의 테스트가 `foo`도 검증하기 때문입니다). 하지만 이는 잡음을 만들 수도 있습니다. `foo`가 고장 나면, 다른 많은 테스트들도 함께 실패하게 되어 문제를 추적하는 것이 더 번거로워집니다. 만약 문제의 근본 원인이 되는 항목에 대한 단 하나의 테스트만 실패한다면, 그 문제를 발견하기 매우 쉬울 것입니다. 반면에 100개의 테스트가 실패한다면, 진짜 문제를 찾는 것이 바늘을 찾는 것처럼 어려워질 수 있습니다.
-
-
-### [외부 코드](https://nodejs.org/en/learn/test-runner/introduction#external-code)
-
-이것은 여러분의 프로젝트에서 제어할 수 없는 코드입니다.
+프로젝트에서 제어할 수 없는 코드를 의미한다.
 
 ```javascript
+// your-project/main.mjs
 import bar from 'bar';
 
 export function main() {
@@ -82,29 +63,26 @@ export function main() {
 }
 ```
 
-여기서 `bar`는 외부 패키지입니다. 예를 들어 npm 의존성과 같은 것들이죠.
+여기서 `bar`는 npm 의존성과 같은 외부 패키지다.
 
-단위 테스트에서는 이 코드를 항상 모킹(mock)해야 합니다. 컴포넌트 테스트와 통합 테스트에서는 모킹 여부가 이 코드의 역할에 따라 달라집니다.
+단위 테스트에서는 이를 항상 목킹해야 한다는 점에는 이견이 없다. 컴포넌트 테스트와 통합 테스트에서는 해당 코드의 성격에 따라 목킹 여부를 결정한다.
 
+#### 목킹이 필요한 이유
 
-#### [왜](https://nodejs.org/en/learn/test-runner/introduction#why-1)
+단위 테스트의 목적은 프로젝트에서 관리하지 않는 코드의 동작을 검증하는 것이 아니다(해당 코드는 자체 테스트가 있어야 한다).
 
-여러분의 프로젝트가 유지하지 않는 코드가 작동하는지 확인하는 것은 단위 테스트의 목적이 아닙니다. 그 코드는 자체 테스트를 가져야 합니다.
+#### 목킹이 불필요한 이유
 
+때로는 목킹이 현실적으로 불가능할 수 있다. 예를 들어, React나 Angular 같은 대형 프레임워크는 거의 목킹하지 않는다(목킹하는 것이 더 큰 문제를 일으킬 수 있다).
 
-#### [왜 사용하지 않을까](https://nodejs.org/en/learn/test-runner/introduction#why-not-1)
+### 외부 시스템
 
-모킹(mocking)이 현실적이지 않은 경우가 있습니다. 예를 들어, React나 Angular 같은 대형 프레임워크를 모킹하는 것은 거의 없습니다. (해결책이 문제보다 더 나쁠 수 있기 때문입니다.)
+데이터베이스, 환경(웹 앱의 Chromium이나 Firefox, 노드 앱의 운영체제 등), 파일 시스템, 메모리 저장소 등을 의미한다.
 
+이상적으로는 목킹이 불필요해야 하지만, 각 테스트 케이스마다 격리된 복사본을 만드는 것은 비용과 실행 시간 등의 이유로 현실적이지 않다. 목킹 없이는 테스트들이 서로 간섭할 수 있다:
 
-### [외부 시스템](https://nodejs.org/en/learn/test-runner/introduction#external-system)
-
-외부 시스템은 데이터베이스, 환경(웹 앱의 경우 Chromium이나 Firefox, Node 앱의 경우 운영체제 등), 파일 시스템, 메모리 저장소 등을 말합니다.
-
-이상적으로는 이러한 외부 시스템을 모킹(mocking)할 필요가 없어야 합니다. 각 테스트 케이스마다 격리된 복사본을 만드는 것은 비용이나 추가 실행 시간 등의 이유로 거의 불가능합니다. 따라서 다음으로 좋은 방법은 모킹을 사용하는 것입니다. 모킹 없이 테스트를 실행하면 테스트들이 서로 방해할 수 있습니다.
-
-**storage.mjs**
 ```javascript
+// storage.mjs
 import { db } from 'db';
 
 export function read(key, all = false) {
@@ -122,18 +100,48 @@ export function save(key, val) {
 }
 ```
 
-위 코드에서 첫 번째와 두 번째 케이스(`it()` 구문)는 동시에 실행되며 동일한 저장소를 변경하기 때문에 서로 방해할 수 있습니다. 이는 경쟁 조건(race condition)을 유발합니다. `save()` 함수의 삽입 작업은 `read()` 함수의 테스트가 항목을 찾는 데 실패하게 만들 수 있고, 반대로 `read()` 함수도 `save()` 함수의 테스트에 영향을 줄 수 있습니다.
+```javascript
+// storage.test.mjs
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
+import { db } from 'db';
 
-## [What to mock](https://nodejs.org/en/learn/test-runner/introduction#what-to-mock)
+import { save } from './storage.mjs';
 
+describe('storage', { concurrency: true }, () => {
+  it('should retrieve the requested item', async () => {
+    await db.upsert('good', 'item'); // 읽을 데이터 생성
+    await db.upsert('erroneous', 'item'); // 실패 가능성 추가
 
+    const results = await read('a', true);
 
+    assert.equal(results.length, 1); // 잘못된 항목을 읽지 않았는지 확인
 
+    assert.deepEqual(results[0], { key: 'good', val: 'item' });
+  });
 
-### [모듈 + 유닛](https://nodejs.org/en/learn/test-runner/introduction#modules--units)
+  it('should save the new item', async () => {
+    const id = await save('good', 'item');
 
-이 예제는 Node.js 테스트 러너의 [`mock`](https://nodejs.org/api/test.html#class-mocktracker) 기능을 활용합니다.
+    assert.ok(id);
+
+    const items = await db.getAll();
+
+    assert.equal(items.length, 1); // 중복 생성되지 않았는지 확인
+
+    assert.deepEqual(items[0], { key: 'good', val: 'item' });
+  });
+});
+```
+
+위 예제에서 첫 번째와 두 번째 케이스(`it()` 구문)는 동시에 실행되면서 동일한 저장소를 변경하기 때문에 서로 간섭할 수 있다(경쟁 조건). `save()`의 삽입으로 인해 정상적인 `read()`의 테스트가 항목 수 검증에서 실패할 수 있고, 그 반대의 경우도 마찬가지다.
+
+## 목킹 대상
+
+### 모듈과 단위
+
+Node.js 테스트 러너의 [`mock`](https://nodejs.org/api/test.html#class-mocktracker)을 활용한다.
 
 ```javascript
 import assert from 'node:assert/strict';
@@ -145,37 +153,35 @@ describe('foo', { concurrency: true }, () => {
 
   before(async () => {
     const barNamedExports = await import('./bar.mjs')
-      // 원본 default export는 제외
+      // 원본 기본 내보내기 제거
       .then(({ default, ...rest }) => rest);
 
-    // 각 테스트 후에 수동으로 restore()를 호출하거나
-    // 모든 테스트 후에 reset()을 호출할 필요는 없습니다.
-    // (Node.js가 자동으로 처리합니다.)
+    // 보통은 각 테스트 후 restore()나 모든 테스트 후 reset()을 수동으로 
+    // 호출할 필요가 없다(node가 자동으로 처리).
     mock.module('./bar.mjs', {
       defaultExport: barMock
-      // 모킹하지 않을 다른 exports는 유지
+      // 목킹하지 않을 다른 내보내기는 유지
       namedExports: barNamedExports,
     });
 
-    // 모킹이 설정된 후에만 import가 시작되도록
-    // 반드시 동적 import를 사용해야 합니다.
+    // 목 설정 후에 임포트가 시작되도록 동적 임포트를 사용해야 한다.
     ({ foo } = await import('./foo.mjs'));
   });
 
   it('should do the thing', () => {
-    barMock.mockImplementationOnce(function bar_mock() {/* … */});
+    barMock.mockImplementationOnce(function bar_mock() {/* ... */});
 
     assert.equal(foo(), 42);
   });
 });
 ```
 
+### API
 
-### [APIs](https://nodejs.org/en/learn/test-runner/introduction#apis)
-
-많은 사람들이 잘 모르는 사실이지만, `fetch`를 모킹(mock)할 수 있는 내장된 방법이 있습니다. [`undici`](https://github.com/nodejs/undici)는 Node.js에서 `fetch`를 구현한 라이브러리입니다. 이 라이브러리는 `node`와 함께 제공되지만, 현재는 `node` 자체에서 노출되지 않기 때문에 별도로 설치해야 합니다 (예: `npm install undici`).
+잘 알려지지 않은 사실이지만, `fetch`를 목킹하는 내장 방법이 있다. [`undici`](https://github.com/nodejs/undici)는 Node.js의 `fetch` 구현체다. Node.js에 포함되어 있지만 직접 노출되지는 않으므로 설치해야 한다(예: `npm install undici`).
 
 ```javascript
+// endpoints.spec.mjs
 import assert from 'node:assert/strict';
 import { beforeEach, describe, it } from 'node:test';
 import { MockAgent, setGlobalDispatcher } from 'undici';
@@ -235,14 +241,14 @@ describe('endpoints', { concurrency: true }, () => {
 });
 ```
 
+### 시간
 
-### [시간](https://nodejs.org/en/learn/test-runner/introduction#time)
+닥터 스트레인지처럼 시간을 제어할 수 있다. 보통 테스트 실행 시간을 인위적으로 늘리지 않기 위해 사용한다(`setTimeout()`이 3분 동안 실행되기를 기다리고 싶지는 않을 것이다). 시간 여행이 필요할 수도 있다. Node.js 테스트 러너의 [`mock.timers`](https://nodejs.org/api/test.html#class-mocktimers)를 활용한다.
 
-닥터 스트레인지처럼 여러분도 시간을 조절할 수 있습니다. 보통 이 기능은 테스트 실행 시간을 인위적으로 늘리지 않기 위해 사용합니다. 예를 들어, `setTimeout()`이 3분 동안 기다리게 하는 것을 원하지 않을 때 유용합니다. 또한 시간 여행을 하고 싶을 때도 활용할 수 있습니다. 이 기능은 Node.js 테스트 러너의 [`mock.timers`](https://nodejs.org/api/test.html#class-mocktimers)를 사용합니다.
-
-여기서 시간대(`Z` 타임스탬프) 사용에 주의하세요. 일관된 시간대를 포함하지 않으면 예상치 못한 결과가 발생할 수 있습니다.
+시간대 설정에 주의해야 한다(타임스탬프의 'Z'). 일관된 시간대를 지정하지 않으면 예상치 못한 결과가 발생할 수 있다.
 
 ```javascript
+// master-time.spec.mjs
 import assert from 'node:assert/strict';
 import { describe, it, mock } from 'node:test';
 
@@ -259,6 +265,4 @@ describe('whatever', { concurrency: true }, () => {
 });
 ```
 
-이 기능은 저장소에 체크인된 정적 픽스처와 비교할 때 특히 유용합니다. 예를 들어 [스냅샷 테스트](https://nodejs.org/api/test.html#snapshot-testing)에서 사용할 수 있습니다.
-
-
+이는 저장소에 저장된 정적 데이터와 비교할 때 특히 유용하다. 예를 들어 이는 [스냅샷 테스팅](https://nodejs.org/api/test.html#snapshot-testing)과 같이 저장소에 저장된 정적 데이터와 비교할 때 특히 유용하다. 예를 들어, 날짜와 시간에 의존하는 기능을 테스트할 때 실제 시간을 고정된 값으로 대체함으로써 안정적이고 예측 가능한 테스트를 작성할 수 있다. 이는 테스트의 신뢰성과 재현성을 크게 향상시킨다.
