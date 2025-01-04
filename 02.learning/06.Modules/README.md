@@ -1,4 +1,4 @@
-# 06.Modules
+# 06.modules
 
 - [패키지 배포하기](01.publishing-a-package.md)
 - [Node-API 패키지 배포 방법](02.publishing-node-api-modules.md)

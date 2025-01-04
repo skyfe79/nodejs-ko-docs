@@ -1,4 +1,4 @@
-# 07.Diagnostics
+# 07.diagnostics
 
 - [사용자 여정](01.user-journey.md)
 - [메모리](02.memory.md)
@@ -10,4 +10,3 @@
 - [성능 저하 문제 해결하기](08.poor-performance.md)
 - [Linux Perf 도구 사용하기](09.using-linux-perf.md)
 - [플레임 그래프](10.flame-graphs.md)
-- [성능 저하](Node.js%20%E2%80%94%20Poor%20Performance.md)

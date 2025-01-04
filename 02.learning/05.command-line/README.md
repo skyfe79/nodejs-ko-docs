@@ -1,4 +1,4 @@
-# 05.Command Line
+# 05.command-line
 
 - [커맨드라인에서 Node.js 스크립트 실행하기](01.run-nodejs-scripts-from-the-command-line.md)
 - [Node.js에서 환경 변수를 읽는 방법](02.how-to-read-environment-variables-from-nodejs.md)

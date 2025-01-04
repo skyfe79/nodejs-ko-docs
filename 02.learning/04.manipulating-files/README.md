@@ -1,4 +1,4 @@
-# 04.Manipulating Files
+# 04.manipulating-files
 
 - [Node.js 파일 정보 조회](01.nodejs-file-stats.md)
 - [Node.js 파일 경로](02.nodejs-file-paths.md)
