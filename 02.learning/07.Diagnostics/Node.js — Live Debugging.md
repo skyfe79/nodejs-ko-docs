@@ -1,3 +1,10 @@
+# Table of Contents
+
+- [[실시간 디버깅](https://nodejs.org/en/learn/modules/publishing-a-package#live-debugging)](#실시간-디버깅httpsnodejsorgenlearnmodulespublishing-a-packagelive-debugging)
+  - [[My application doesn’t behave as expected](https://nodejs.org/en/learn/modules/publishing-a-package#my-application-doesnt-behave-as-expected)](#my-application-doesnt-behave-as-expectedhttpsnodejsorgenlearnmodulespublishing-a-packagemy-application-doesnt-behave-as-expected)
+    - [증상](#증상)
+    - [디버깅](#디버깅)
+
 # [실시간 디버깅](https://nodejs.org/en/learn/modules/publishing-a-package#live-debugging)
 
 이 문서에서는 Node.js 프로세스를 실시간으로 디버깅하는 방법을 배울 수 있습니다.

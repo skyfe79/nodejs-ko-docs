@@ -1,3 +1,10 @@
+# Table of Contents
+
+- [[성능 저하](https://nodejs.org/en/learn/modules/publishing-a-package#poor-performance)](#성능-저하httpsnodejsorgenlearnmodulespublishing-a-packagepoor-performance)
+  - [[My application has a poor performance](https://nodejs.org/en/learn/modules/publishing-a-package#my-application-has-a-poor-performance)](#my-application-has-a-poor-performancehttpsnodejsorgenlearnmodulespublishing-a-packagemy-application-has-a-poor-performance)
+    - [증상](#증상)
+    - [[디버깅](https://nodejs.org/en/learn/modules/publishing-a-package#debugging)](#디버깅httpsnodejsorgenlearnmodulespublishing-a-packagedebugging)
+
 # [성능 저하](https://nodejs.org/en/learn/modules/publishing-a-package#poor-performance)
 
 이 문서에서는 Node.js 프로세스의 성능을 프로파일링하는 방법을 배울 수 있습니다.

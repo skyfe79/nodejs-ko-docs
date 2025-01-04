@@ -1,3 +1,38 @@
+# Table of Contents
+
+- [스트림 사용 방법](#스트림-사용-방법)
+  - [Node.js 스트림이란?](#nodejs-스트림이란)
+    - [이벤트 기반 아키텍처(Event-Driven Architecture)](#이벤트-기반-아키텍처event-driven-architecture)
+  - [[스트림을 사용하는 이유](https://nodejs.org/en/learn/modules/publishing-a-package#why-use-streams)](#스트림을-사용하는-이유httpsnodejsorgenlearnmodulespublishing-a-packagewhy-use-streams)
+    - [[성능 관련 참고 사항](https://nodejs.org/en/learn/modules/publishing-a-package#note-on-performance)](#성능-관련-참고-사항httpsnodejsorgenlearnmodulespublishing-a-packagenote-on-performance)
+  - [[스트림 역사](https://nodejs.org/en/learn/modules/publishing-a-package#stream-history)](#스트림-역사httpsnodejsorgenlearnmodulespublishing-a-packagestream-history)
+    - [[Streams 0](https://nodejs.org/en/learn/modules/publishing-a-package#streams-0)](#streams-0httpsnodejsorgenlearnmodulespublishing-a-packagestreams-0)
+    - [[Streams 1 (클래식)](https://nodejs.org/en/learn/modules/publishing-a-package#streams-1-classic)](#streams-1-클래식httpsnodejsorgenlearnmodulespublishing-a-packagestreams-1-classic)
+    - [[Streams 2](https://nodejs.org/en/learn/modules/publishing-a-package#streams-2)](#streams-2httpsnodejsorgenlearnmodulespublishing-a-packagestreams-2)
+    - [[Streams 3](https://nodejs.org/en/learn/modules/publishing-a-package#streams-3)](#streams-3httpsnodejsorgenlearnmodulespublishing-a-packagestreams-3)
+  - [[Stream types](https://nodejs.org/en/learn/modules/publishing-a-package#stream-types)](#stream-typeshttpsnodejsorgenlearnmodulespublishing-a-packagestream-types)
+    - [[Readable](https://nodejs.org/en/learn/modules/publishing-a-package#readable)](#readablehttpsnodejsorgenlearnmodulespublishing-a-packagereadable)
+      - [주요 메서드와 이벤트](#주요-메서드와-이벤트)
+      - [[기본적인 읽기 가능한 스트림](https://nodejs.org/en/learn/modules/publishing-a-package#basic-readable-stream)](#기본적인-읽기-가능한-스트림httpsnodejsorgenlearnmodulespublishing-a-packagebasic-readable-stream)
+      - [[readable 이벤트를 활용한 고급 제어](https://nodejs.org/en/learn/modules/publishing-a-package#advanced-control-with-the-readable-event)](#readable-이벤트를-활용한-고급-제어httpsnodejsorgenlearnmodulespublishing-a-packageadvanced-control-with-the-readable-event)
+    - [[Writable](https://nodejs.org/en/learn/modules/publishing-a-package#writable)](#writablehttpsnodejsorgenlearnmodulespublishing-a-packagewritable)
+      - [Writable Streams의 주요 메서드와 이벤트](#writable-streams의-주요-메서드와-이벤트)
+      - [Writable 생성하기](#writable-생성하기)
+    - [[Duplex](https://nodejs.org/en/learn/modules/publishing-a-package#duplex)](#duplexhttpsnodejsorgenlearnmodulespublishing-a-packageduplex)
+      - [듀플렉스 스트림의 주요 메서드와 이벤트](#듀플렉스-스트림의-주요-메서드와-이벤트)
+    - [[Transform](https://nodejs.org/en/learn/modules/publishing-a-package#transform)](#transformhttpsnodejsorgenlearnmodulespublishing-a-packagetransform)
+      - [Transform Streams의 주요 메서드와 이벤트](#transform-streams의-주요-메서드와-이벤트)
+      - [[Transform Stream 생성하기](https://nodejs.org/en/learn/modules/publishing-a-package#creating-a-transform-stream)](#transform-stream-생성하기httpsnodejsorgenlearnmodulespublishing-a-packagecreating-a-transform-stream)
+  - [스트림을 다루는 방법](#스트림을-다루는-방법)
+    - [`.pipe()` 메서드](#pipe-메서드)
+    - [[`pipeline()`](https://nodejs.org/en/learn/modules/publishing-a-package#pipeline)](#pipelinehttpsnodejsorgenlearnmodulespublishing-a-packagepipeline)
+    - [[Async Iterators](https://nodejs.org/en/learn/modules/publishing-a-package#async-iterators)](#async-iteratorshttpsnodejsorgenlearnmodulespublishing-a-packageasync-iterators)
+      - [스트림과 함께 비동기 이터레이터를 사용하는 장점](#스트림과-함께-비동기-이터레이터를-사용하는-장점)
+    - [[Object 모드](https://nodejs.org/en/learn/modules/publishing-a-package#object-mode)](#object-모드httpsnodejsorgenlearnmodulespublishing-a-packageobject-mode)
+    - [[백프레셔(Backpressure)](https://nodejs.org/en/learn/modules/publishing-a-package#backpressure)](#백프레셔backpressurehttpsnodejsorgenlearnmodulespublishing-a-packagebackpressure)
+  - [스트림 vs 웹 스트림](#스트림-vs-웹-스트림)
+    - [스트림과 웹 스트림의 상호 운용성](#스트림과-웹-스트림의-상호-운용성)
+
 # 스트림 사용 방법
 
 Node.js 애플리케이션에서 대량의 데이터를 다루는 것은 양날의 검과 같습니다. 방대한 양의 데이터를 처리할 수 있는 능력은 매우 유용하지만, 성능 병목 현상과 메모리 고갈을 초래할 수도 있습니다. 전통적으로 개발자들은 이 문제를 해결하기 위해 전체 데이터셋을 한 번에 메모리로 읽어들이는 방식을 사용했습니다. 이 방법은 작은 데이터셋에서는 직관적이지만, 대용량 데이터(예: 파일, 네트워크 요청 등)에서는 비효율적이고 리소스를 많이 소모합니다.

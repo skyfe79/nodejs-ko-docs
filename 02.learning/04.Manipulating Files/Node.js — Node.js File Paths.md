@@ -1,3 +1,10 @@
+# Table of Contents
+
+- [[Node.js 파일 경로](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#nodejs-file-paths)](#nodejs-파일-경로httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlnodejs-file-paths)
+  - [경로에서 정보 추출하기](#경로에서-정보-추출하기)
+    - [[예제](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#example)](#예제httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlexample)
+  - [경로 다루기](#경로-다루기)
+
 # [Node.js 파일 경로](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#nodejs-file-paths)
 
 시스템의 모든 파일은 경로를 가지고 있습니다. Linux와 macOS에서는 `/users/joe/file.txt`와 같은 형태의 경로를 사용합니다. 반면 Windows 컴퓨터는 다르게 `C:\users\joe\file.txt`와 같은 구조를 가집니다.

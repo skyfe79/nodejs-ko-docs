@@ -1,3 +1,9 @@
+# Table of Contents
+
+- [process.nextTick() 이해하기](#processnexttick-이해하기)
+      - [이벤트 순서 예제](#이벤트-순서-예제)
+      - [[예제 출력:](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#example-output)](#예제-출력httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlexample-output)
+
 # process.nextTick() 이해하기
 
 Node.js 이벤트 루프를 이해하려면 `process.nextTick()`이 중요한 역할을 합니다. 런타임이 이벤트를 위해 자바스크립트로 콜백을 호출할 때마다 이를 틱(tick)이라고 부릅니다.

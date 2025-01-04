@@ -1,3 +1,7 @@
+# Table of Contents
+
+- [setImmediate() 이해하기](#setimmediate-이해하기)
+
 # setImmediate() 이해하기
 
 코드를 가능한 한 빨리 비동기적으로 실행하고 싶을 때, Node.js에서 제공하는 `setImmediate()` 함수를 사용할 수 있습니다.

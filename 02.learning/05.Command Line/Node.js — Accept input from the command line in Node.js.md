@@ -1,3 +1,7 @@
+# Table of Contents
+
+- [Node.js에서 커맨드라인 입력 받기](#nodejs에서-커맨드라인-입력-받기)
+
 # Node.js에서 커맨드라인 입력 받기
 
 Node.js CLI 프로그램을 어떻게 대화형으로 만들 수 있을까요?

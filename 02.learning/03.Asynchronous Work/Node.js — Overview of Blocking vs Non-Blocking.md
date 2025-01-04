@@ -1,3 +1,12 @@
+# Table of Contents
+
+- [블로킹 vs 논블로킹 개요](#블로킹-vs-논블로킹-개요)
+  - [블로킹(Blocking)](#블로킹blocking)
+  - [코드 비교](#코드-비교)
+  - [동시성과 처리량](#동시성과-처리량)
+  - [블로킹과 논블로킹 코드를 혼용할 때의 위험성](#블로킹과-논블로킹-코드를-혼용할-때의-위험성)
+  - [[추가 리소스](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#additional-resources)](#추가-리소스httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controladditional-resources)
+
 # 블로킹 vs 논블로킹 개요
 
 이 문서는 Node.js에서 **블로킹**과 **논블로킹** 호출의 차이를 설명합니다. 이벤트 루프와 libuv에 대해 언급하지만, 해당 주제에 대한 사전 지식은 필요하지 않습니다. 독자는 JavaScript 언어와 Node.js의 [콜백 패턴](https://nodejs.org/en/learn/asynchronous-work/javascript-asynchronous-programming-and-callbacks)에 대한 기본적인 이해가 있다고 가정합니다.

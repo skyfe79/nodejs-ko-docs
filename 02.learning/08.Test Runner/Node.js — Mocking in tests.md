@@ -1,3 +1,19 @@
+# Table of Contents
+
+- [[테스트에서의 모킹](https://nodejs.org/en/learn/test-runner/introduction#mocking-in-tests)](#테스트에서의-모킹httpsnodejsorgenlearntest-runnerintroductionmocking-in-tests)
+  - [[모의 객체 사용 시기와 사용하지 말아야 할 때](https://nodejs.org/en/learn/test-runner/introduction#when-and-not-to-mock)](#모의-객체-사용-시기와-사용하지-말아야-할-때httpsnodejsorgenlearntest-runnerintroductionwhen-and-not-to-mock)
+    - [[자체 코드](https://nodejs.org/en/learn/test-runner/introduction#own-code)](#자체-코드httpsnodejsorgenlearntest-runnerintroductionown-code)
+      - [[왜 필요한가](https://nodejs.org/en/learn/test-runner/introduction#why)](#왜-필요한가httpsnodejsorgenlearntest-runnerintroductionwhy)
+      - [[왜 하지 않는가](https://nodejs.org/en/learn/test-runner/introduction#why-not)](#왜-하지-않는가httpsnodejsorgenlearntest-runnerintroductionwhy-not)
+    - [[외부 코드](https://nodejs.org/en/learn/test-runner/introduction#external-code)](#외부-코드httpsnodejsorgenlearntest-runnerintroductionexternal-code)
+      - [[왜](https://nodejs.org/en/learn/test-runner/introduction#why-1)](#왜httpsnodejsorgenlearntest-runnerintroductionwhy-1)
+      - [[왜 사용하지 않을까](https://nodejs.org/en/learn/test-runner/introduction#why-not-1)](#왜-사용하지-않을까httpsnodejsorgenlearntest-runnerintroductionwhy-not-1)
+    - [[외부 시스템](https://nodejs.org/en/learn/test-runner/introduction#external-system)](#외부-시스템httpsnodejsorgenlearntest-runnerintroductionexternal-system)
+  - [[What to mock](https://nodejs.org/en/learn/test-runner/introduction#what-to-mock)](#what-to-mockhttpsnodejsorgenlearntest-runnerintroductionwhat-to-mock)
+    - [[모듈 + 유닛](https://nodejs.org/en/learn/test-runner/introduction#modules--units)](#모듈--유닛httpsnodejsorgenlearntest-runnerintroductionmodules--units)
+    - [[APIs](https://nodejs.org/en/learn/test-runner/introduction#apis)](#apishttpsnodejsorgenlearntest-runnerintroductionapis)
+    - [[시간](https://nodejs.org/en/learn/test-runner/introduction#time)](#시간httpsnodejsorgenlearntest-runnerintroductiontime)
+
 # [테스트에서의 모킹](https://nodejs.org/en/learn/test-runner/introduction#mocking-in-tests)
 
 모킹은 가짜 객체를 만드는 방법입니다. 일반적으로 `'a'일 때, 'b'를 실행한다`는 방식으로 제어합니다. 이 방법은 복잡한 부분을 줄이고 "중요하지 않은" 요소를 통제하기 위해 사용됩니다. "목(mock)"과 "스텁(stub)"은 기술적으로 다른 종류의 "테스트 더블(test doubles)"입니다. 궁금한 독자를 위해 설명하자면, 스텁은 아무런 동작을 하지 않지만 호출을 추적하는 대체물입니다. 목은 스텁에 가짜 구현(`'a'일 때, 'b'를 실행한다`)이 추가된 것입니다. 이 문서에서는 두 개념의 차이가 중요하지 않으므로 스텁도 목으로 통칭합니다.

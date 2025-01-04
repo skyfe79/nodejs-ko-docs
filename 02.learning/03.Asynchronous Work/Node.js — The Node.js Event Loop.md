@@ -1,3 +1,24 @@
+# Table of Contents
+
+- [[The Node.js Event Loop](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#the-nodejs-event-loop)](#the-nodejs-event-loophttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlthe-nodejs-event-loop)
+  - [이벤트 루프란 무엇인가?](#이벤트-루프란-무엇인가)
+  - [이벤트 루프 설명](#이벤트-루프-설명)
+  - [[단계 개요](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#phases-overview)](#단계-개요httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlphases-overview)
+  - [[Phases in Detail](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#phases-in-detail)](#phases-in-detailhttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlphases-in-detail)
+    - [[타이머](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#timers)](#타이머httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controltimers)
+    - [[pending callbacks](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#pending-callbacks)](#pending-callbackshttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlpending-callbacks)
+    - [[poll](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#poll)](#pollhttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlpoll)
+    - [[check](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#check)](#checkhttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlcheck)
+    - [[close callbacks](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#close-callbacks)](#close-callbackshttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlclose-callbacks)
+  - [[`setImmediate()` vs `setTimeout()`](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#setimmediate-vs-settimeout)](#setimmediate-vs-settimeouthttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlsetimmediate-vs-settimeout)
+  - [[`process.nextTick()`](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#processnexttick)](#processnexttickhttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlprocessnexttick)
+    - [`process.nextTick()` 이해하기](#processnexttick-이해하기)
+    - [왜 이런 것이 허용될까?](#왜-이런-것이-허용될까)
+  - [[`process.nextTick()` vs `setImmediate()`](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#processnexttick-vs-setimmediate)](#processnexttick-vs-setimmediatehttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlprocessnexttick-vs-setimmediate)
+  - [`process.nextTick()`을 사용하는 이유](#processnexttick을-사용하는-이유)
+    - [사용자의 기대에 맞추는 예제](#사용자의-기대에-맞추는-예제)
+    - [`EventEmitter` 확장 예제](#eventemitter-확장-예제)
+
 # [The Node.js Event Loop](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#the-nodejs-event-loop)
 
 

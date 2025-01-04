@@ -1,3 +1,19 @@
+# Table of Contents
+
+- [HTTP 트랜잭션의 구조](#http-트랜잭션의-구조)
+  - [서버 생성하기](#서버-생성하기)
+  - [[메서드, URL 및 헤더](https://nodejs.org/en/learn/modules/publishing-a-package#method-url-and-headers)](#메서드-url-및-헤더httpsnodejsorgenlearnmodulespublishing-a-packagemethod-url-and-headers)
+  - [[Request Body](https://nodejs.org/en/learn/modules/publishing-a-package#request-body)](#request-bodyhttpsnodejsorgenlearnmodulespublishing-a-packagerequest-body)
+  - [[에러에 대한 간단한 설명](https://nodejs.org/en/learn/modules/publishing-a-package#a-quick-thing-about-errors)](#에러에-대한-간단한-설명httpsnodejsorgenlearnmodulespublishing-a-packagea-quick-thing-about-errors)
+  - [[지금까지의 내용](https://nodejs.org/en/learn/modules/publishing-a-package#what-weve-got-so-far)](#지금까지의-내용httpsnodejsorgenlearnmodulespublishing-a-packagewhat-weve-got-so-far)
+  - [[HTTP 상태 코드](https://nodejs.org/en/learn/modules/publishing-a-package#http-status-code)](#http-상태-코드httpsnodejsorgenlearnmodulespublishing-a-packagehttp-status-code)
+  - [응답 헤더 설정하기](#응답-헤더-설정하기)
+  - [헤더 데이터 명시적으로 보내기](#헤더-데이터-명시적으로-보내기)
+  - [응답 본문 전송하기](#응답-본문-전송하기)
+  - [에러에 대한 또 다른 간단한 설명](#에러에-대한-또-다른-간단한-설명)
+  - [[모든 것을 합쳐보기](https://nodejs.org/en/learn/modules/publishing-a-package#put-it-all-together)](#모든-것을-합쳐보기httpsnodejsorgenlearnmodulespublishing-a-packageput-it-all-together)
+  - [[에코 서버 예제](https://nodejs.org/en/learn/modules/publishing-a-package#echo-server-example)](#에코-서버-예제httpsnodejsorgenlearnmodulespublishing-a-packageecho-server-example)
+
 # HTTP 트랜잭션의 구조
 
 이 가이드는 Node.js에서 HTTP 요청을 처리하는 과정을 명확히 이해하는 데 목적을 둡니다. 여러분이 일반적으로 HTTP 요청이 어떻게 동작하는지 알고 있다고 가정하겠습니다. 또한 Node.js의 [`EventEmitters`](https://nodejs.org/api/events.html)와 [`Streams`](https://nodejs.org/api/stream.html)에 어느 정도 익숙하다고 가정합니다. 만약 이 개념들이 익숙하지 않다면, 각 API 문서를 빠르게 읽어보는 것이 좋습니다.

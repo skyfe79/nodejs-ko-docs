@@ -1,3 +1,14 @@
+# Table of Contents
+
+- [[메모리](https://nodejs.org/en/learn/modules/publishing-a-package#memory)](#메모리httpsnodejsorgenlearnmodulespublishing-a-packagememory)
+  - [[프로세스가 메모리 부족으로 종료됨](https://nodejs.org/en/learn/modules/publishing-a-package#my-process-runs-out-of-memory)](#프로세스가-메모리-부족으로-종료됨httpsnodejsorgenlearnmodulespublishing-a-packagemy-process-runs-out-of-memory)
+    - [증상](#증상)
+    - [[부작용](https://nodejs.org/en/learn/modules/publishing-a-package#side-effects)](#부작용httpsnodejsorgenlearnmodulespublishing-a-packageside-effects)
+  - [[My process utilizes memory inefficiently](https://nodejs.org/en/learn/modules/publishing-a-package#my-process-utilizes-memory-inefficiently)](#my-process-utilizes-memory-inefficientlyhttpsnodejsorgenlearnmodulespublishing-a-packagemy-process-utilizes-memory-inefficiently)
+    - [증상](#증상)
+    - [[사이드 이펙트](https://nodejs.org/en/learn/modules/publishing-a-package#side-effects-1)](#사이드-이펙트httpsnodejsorgenlearnmodulespublishing-a-packageside-effects-1)
+  - [디버깅](#디버깅)
+
 # [메모리](https://nodejs.org/en/learn/modules/publishing-a-package#memory)
 
 이 문서에서는 메모리 관련 문제를 디버깅하는 방법을 배울 수 있습니다.

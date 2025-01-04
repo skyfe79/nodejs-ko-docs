@@ -1,3 +1,15 @@
+# Table of Contents
+
+- [Node.js에서 폴더 작업하기](#nodejs에서-폴더-작업하기)
+  - [폴더 존재 여부 확인하기](#폴더-존재-여부-확인하기)
+  - [새로운 폴더 생성하기](#새로운-폴더-생성하기)
+  - [디렉토리 내용 읽기](#디렉토리-내용-읽기)
+  - [폴더 이름 변경하기](#폴더-이름-변경하기)
+    - [비동기 방식 (`fs.rename`)](#비동기-방식-fsrename)
+    - [동기 방식 (`fs.renameSync`)](#동기-방식-fsrenamesync)
+    - [Promise 기반 방식 (`fsPromises.rename`)](#promise-기반-방식-fspromisesrename)
+  - [폴더 삭제하기](#폴더-삭제하기)
+
 # Node.js에서 폴더 작업하기
 
 Node.js의 `fs` 코어 모듈은 폴더 작업에 유용한 여러 메서드를 제공합니다.

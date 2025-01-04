@@ -1,3 +1,18 @@
+# Table of Contents
+
+- [[스트림에서의 백프레셔](https://nodejs.org/en/learn/modules/publishing-a-package#backpressuring-in-streams)](#스트림에서의-백프레셔httpsnodejsorgenlearnmodulespublishing-a-packagebackpressuring-in-streams)
+  - [데이터 처리의 문제점](#데이터-처리의-문제점)
+  - [데이터가 너무 빠르게 들어올 때](#데이터가-너무-빠르게-들어올-때)
+  - [가비지 컬렉션의 과도한 부하](#가비지-컬렉션의-과도한-부하)
+  - [메모리 소모](#메모리-소모)
+  - [백프레셔가 이러한 문제를 어떻게 해결하나요?](#백프레셔가-이러한-문제를-어떻게-해결하나요)
+  - [`.pipe()`의 생명주기](#pipe의-생명주기)
+  - [[백프레셔 가이드라인](https://nodejs.org/en/learn/modules/publishing-a-package#backpressure-guidelines)](#백프레셔-가이드라인httpsnodejsorgenlearnmodulespublishing-a-packagebackpressure-guidelines)
+  - [커스텀 스트림 구현 시 지켜야 할 규칙](#커스텀-스트림-구현-시-지켜야-할-규칙)
+  - [Readable Streams에 특화된 규칙](#readable-streams에-특화된-규칙)
+  - [Writable Streams에 특화된 규칙](#writable-streams에-특화된-규칙)
+  - [결론](#결론)
+
 # [스트림에서의 백프레셔](https://nodejs.org/en/learn/modules/publishing-a-package#backpressuring-in-streams)
 
 데이터 처리 중 발생하는 일반적인 문제 중 하나는 [`백프레셔`](https://en.wikipedia.org/wiki/Backpressure_routing)입니다. 이는 데이터 전송 중 버퍼 뒤에 데이터가 쌓이는 현상을 설명합니다. 데이터를 받는 쪽에서 복잡한 작업을 수행하거나 어떤 이유로 느려지면, 들어오는 데이터가 마치 막힌 것처럼 쌓이게 됩니다.

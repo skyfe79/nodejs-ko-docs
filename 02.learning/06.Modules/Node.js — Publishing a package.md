@@ -1,3 +1,29 @@
+# Table of Contents
+
+- [[패키지 배포하기](https://nodejs.org/en/learn/modules/publishing-a-package#publishing-a-package)](#패키지-배포하기httpsnodejsorgenlearnmodulespublishing-a-packagepublishing-a-package)
+  - [[적용할 방법 선택](https://nodejs.org/en/learn/modules/publishing-a-package#pick-your-fix)](#적용할-방법-선택httpsnodejsorgenlearnmodulespublishing-a-packagepick-your-fix)
+    - [[CJS 소스 및 배포](https://nodejs.org/en/learn/modules/publishing-a-package#cjs-source-and-distribution)](#cjs-소스-및-배포httpsnodejsorgenlearnmodulespublishing-a-packagecjs-source-and-distribution)
+    - [[ESM 소스 및 배포](https://nodejs.org/en/learn/modules/publishing-a-package#esm-source-and-distribution)](#esm-소스-및-배포httpsnodejsorgenlearnmodulespublishing-a-packageesm-source-and-distribution)
+    - [[CJS 소스와 ESM 배포만](https://nodejs.org/en/learn/modules/publishing-a-package#cjs-source-and-only-esm-distribution)](#cjs-소스와-esm-배포만httpsnodejsorgenlearnmodulespublishing-a-packagecjs-source-and-only-esm-distribution)
+    - [[CJS 소스와 CJS & ESM 배포](https://nodejs.org/en/learn/modules/publishing-a-package#cjs-source-and-both-cjs--esm-distribution)](#cjs-소스와-cjs--esm-배포httpsnodejsorgenlearnmodulespublishing-a-packagecjs-source-and-both-cjs--esm-distribution)
+      - [[명명된 내보내기를 `exports`에 직접 연결하기](https://nodejs.org/en/learn/modules/publishing-a-package#attach-named-exports-directly-onto-exports)](#명명된-내보내기를-exports에-직접-연결하기httpsnodejsorgenlearnmodulespublishing-a-packageattach-named-exports-directly-onto-exports)
+      - [간단한 ESM 래퍼 사용하기](#간단한-esm-래퍼-사용하기)
+      - [[두 가지 전체 배포 방식](https://nodejs.org/en/learn/modules/publishing-a-package#two-full-distributions)](#두-가지-전체-배포-방식httpsnodejsorgenlearnmodulespublishing-a-packagetwo-full-distributions)
+    - [[ESM 소스와 CJS 배포만 사용하기](https://nodejs.org/en/learn/modules/publishing-a-package#esm-source-with-only-cjs-distribution)](#esm-소스와-cjs-배포만-사용하기httpsnodejsorgenlearnmodulespublishing-a-packageesm-source-with-only-cjs-distribution)
+    - [[ESM 소스와 CJS 및 ESM 배포](https://nodejs.org/en/learn/modules/publishing-a-package#esm-source-and-both-cjs--esm-distribution)](#esm-소스와-cjs-및-esm-배포httpsnodejsorgenlearnmodulespublishing-a-packageesm-source-and-both-cjs--esm-distribution)
+      - [[CJS 배포만 프로퍼티 exports로 게시하기](https://nodejs.org/en/learn/modules/publishing-a-package#publish-only-a-cjs-distribution-with-property-exports)](#cjs-배포만-프로퍼티-exports로-게시하기httpsnodejsorgenlearnmodulespublishing-a-packagepublish-only-a-cjs-distribution-with-property-exports)
+      - [CJS 배포판을 ESM 래퍼로 게시하기](#cjs-배포판을-esm-래퍼로-게시하기)
+      - [[CJS와 ESM 배포판 모두 게시하기](https://nodejs.org/en/learn/modules/publishing-a-package#publish-both-full-cjs--esm-distributions)](#cjs와-esm-배포판-모두-게시하기httpsnodejsorgenlearnmodulespublishing-a-packagepublish-both-full-cjs--esm-distributions)
+        - [[전체 패키지를 ESM으로 표시하고 CJS 내보내기를 `.cjs` 파일 확장자로 명시적으로 표시](https://nodejs.org/en/learn/modules/publishing-a-package#mark-the-whole-package-as-esm-and-specifically-mark-the-cjs-exports-as-cjs-via-the-cjs-file-extension)](#전체-패키지를-esm으로-표시하고-cjs-내보내기를-cjs-파일-확장자로-명시적으로-표시httpsnodejsorgenlearnmodulespublishing-a-packagemark-the-whole-package-as-esm-and-specifically-mark-the-cjs-exports-as-cjs-via-the-cjs-file-extension)
+        - [모든 소스 코드 파일에 `.mjs` (또는 동등한) 파일 확장자 사용](#모든-소스-코드-파일에-mjs-또는-동등한-파일-확장자-사용)
+      - [[Node.js 12.22.x 이전 버전](https://nodejs.org/en/learn/modules/publishing-a-package#nodejs-before-1222x)](#nodejs-1222x-이전-버전httpsnodejsorgenlearnmodulespublishing-a-packagenodejs-before-1222x)
+  - [일반적인 주의사항](#일반적인-주의사항)
+  - [[토끼굴 속으로](https://nodejs.org/en/learn/modules/publishing-a-package#down-the-rabbit-hole)](#토끼굴-속으로httpsnodejsorgenlearnmodulespublishing-a-packagedown-the-rabbit-hole)
+    - [[이중 패키지 위험](https://nodejs.org/en/learn/modules/publishing-a-package#the-dual-package-hazard)](#이중-패키지-위험httpsnodejsorgenlearnmodulespublishing-a-packagethe-dual-package-hazard)
+    - [[어떻게 여기까지 왔을까](https://nodejs.org/en/learn/modules/publishing-a-package#how-did-we-get-here)](#어떻게-여기까지-왔을까httpsnodejsorgenlearnmodulespublishing-a-packagehow-did-we-get-here)
+  - [주의사항](#주의사항)
+  - [[각주](https://nodejs.org/en/learn/modules/publishing-a-package#footnote-label)](#각주httpsnodejsorgenlearnmodulespublishing-a-packagefootnote-label)
+
 # [패키지 배포하기](https://nodejs.org/en/learn/modules/publishing-a-package#publishing-a-package)
 
 제공된 모든 `package.json` 설정(특별히 "작동하지 않음"으로 표시되지 않은 것들)은 Node.js 12.22.x(v12 최신 버전, 지원되는 가장 오래된 버전)와 17.2.0(현재 최신 버전)에서 작동합니다<sup><a id="user-content-fnref-1" data-footnote-ref="true" aria-describedby="footnote-label" href="https://nodejs.org/en/learn/modules/publishing-a-package#user-content-fn-1">1</a></sup>. 또한, 웹팩 5.53.0과 5.63.0에서도 각각 작동합니다. 이 설정들은 [JakobJingleheimer/nodejs-module-config-examples](https://github.com/JakobJingleheimer/nodejs-module-config-examples)에서 확인할 수 있습니다.

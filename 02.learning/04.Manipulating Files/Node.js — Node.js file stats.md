@@ -1,3 +1,7 @@
+# Table of Contents
+
+- [[Node.js 파일 상태 정보](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#nodejs-file-stats)](#nodejs-파일-상태-정보httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlnodejs-file-stats)
+
 # [Node.js 파일 상태 정보](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#nodejs-file-stats)
 
 모든 파일은 Node.js를 사용해 확인할 수 있는 세부 정보를 가지고 있습니다. 특히, [`fs` 모듈](https://nodejs.org/api/fs.html)이 제공하는 `stat()` 메서드를 사용하면 됩니다.
