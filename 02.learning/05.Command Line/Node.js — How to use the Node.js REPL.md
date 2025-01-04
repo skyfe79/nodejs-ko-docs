@@ -1,12 +1,12 @@
 # Table of Contents
 
-- [[How to use the Node.js REPL](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#how-to-use-the-nodejs-repl)](#how-to-use-the-nodejs-replhttpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-linehow-to-use-the-nodejs-repl)
+- [How to use the Node.js REPL](#how-to-use-the-nodejs-repl)
   - [Node.js REPL이란 무엇인가?](#nodejs-repl이란-무엇인가)
   - [Node.js REPL 사용 방법](#nodejs-repl-사용-방법)
     - [`_` 특수 변수](#_-특수-변수)
-    - [[위쪽 화살표 키](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#the-up-arrow-key)](#위쪽-화살표-키httpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-linethe-up-arrow-key)
-    - [[Dot commands](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#dot-commands)](#dot-commandshttpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-linedot-commands)
-    - [[JavaScript 파일에서 REPL 실행하기](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#run-repl-from-javascript-file)](#javascript-파일에서-repl-실행하기httpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-linerun-repl-from-javascript-file)
+    - [위쪽 화살표 키](#위쪽-화살표-키)
+    - [Dot commands](#dot-commands)
+    - [JavaScript 파일에서 REPL 실행하기](#javascript-파일에서-repl-실행하기)
 
 # [How to use the Node.js REPL](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#how-to-use-the-nodejs-repl)
 

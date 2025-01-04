@@ -7,8 +7,8 @@
   - [일반 설정](#일반-설정)
   - [ServiceWorker 테스트](#serviceworker-테스트)
   - [스냅샷 테스트](#스냅샷-테스트)
-  - [[유닛 테스트](https://nodejs.org/en/learn/test-runner/introduction#unit-tests)](#유닛-테스트httpsnodejsorgenlearntest-runnerintroductionunit-tests)
-  - [[사용자 인터페이스 테스트](https://nodejs.org/en/learn/test-runner/introduction#user-interface-tests)](#사용자-인터페이스-테스트httpsnodejsorgenlearntest-runnerintroductionuser-interface-tests)
+  - [유닛 테스트](#유닛-테스트)
+  - [사용자 인터페이스 테스트](#사용자-인터페이스-테스트)
 
 # Node.js 테스트 러너 사용하기
 

@@ -1,9 +1,9 @@
 # Table of Contents
 
-- [[ABI Stability](https://nodejs.org/en/learn/modules/publishing-a-package#abi-stability)](#abi-stabilityhttpsnodejsorgenlearnmodulespublishing-a-packageabi-stability)
+- [ABI Stability](#abi-stability)
   - [소개](#소개)
   - [Node.js의 ABI 안정성](#nodejs의-abi-안정성)
-  - [[N-API](https://nodejs.org/en/learn/modules/publishing-a-package#n-api)](#n-apihttpsnodejsorgenlearnmodulespublishing-a-packagen-api)
+  - [N-API](#n-api)
 
 # [ABI Stability](https://nodejs.org/en/learn/modules/publishing-a-package#abi-stability)
 

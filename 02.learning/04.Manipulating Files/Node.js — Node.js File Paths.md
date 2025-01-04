@@ -1,8 +1,8 @@
 # Table of Contents
 
-- [[Node.js 파일 경로](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#nodejs-file-paths)](#nodejs-파일-경로httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlnodejs-file-paths)
+- [Node.js 파일 경로](#nodejs-파일-경로)
   - [경로에서 정보 추출하기](#경로에서-정보-추출하기)
-    - [[예제](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#example)](#예제httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlexample)
+    - [예제](#예제)
   - [경로 다루기](#경로-다루기)
 
 # [Node.js 파일 경로](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#nodejs-file-paths)

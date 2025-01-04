@@ -1,14 +1,14 @@
 # Table of Contents
 
-- [[Output to the command line using Node.js](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#output-to-the-command-line-using-nodejs)](#output-to-the-command-line-using-nodejshttpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-lineoutput-to-the-command-line-using-nodejs)
+- [Output to the command line using Node.js](#output-to-the-command-line-using-nodejs)
     - [콘솔 모듈을 사용한 기본 출력](#콘솔-모듈을-사용한-기본-출력)
-    - [[콘솔 지우기](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#clear-the-console)](#콘솔-지우기httpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-lineclear-the-console)
+    - [콘솔 지우기](#콘솔-지우기)
     - [엘리먼트 개수 세기](#엘리먼트-개수-세기)
-    - [[카운트 초기화](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#reset-counting)](#카운트-초기화httpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-linereset-counting)
+    - [카운트 초기화](#카운트-초기화)
     - [스택 트레이스 출력하기](#스택-트레이스-출력하기)
-    - [[소요 시간 계산하기](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#calculate-the-time-spent)](#소요-시간-계산하기httpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-linecalculate-the-time-spent)
-    - [[stdout와 stderr](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#stdout-and-stderr)](#stdout와-stderrhttpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-linestdout-and-stderr)
-    - [[터미널 출력에 색상 입히기](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#color-the-output)](#터미널-출력에-색상-입히기httpsnodejsorgenlearncommand-linerun-nodejs-scripts-from-the-command-linecolor-the-output)
+    - [소요 시간 계산하기](#소요-시간-계산하기)
+    - [stdout와 stderr](#stdout와-stderr)
+    - [터미널 출력에 색상 입히기](#터미널-출력에-색상-입히기)
 
 # [Output to the command line using Node.js](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line#output-to-the-command-line-using-nodejs)
 

@@ -1,11 +1,11 @@
 # Table of Contents
 
-- [[Writing files with Node.js](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#writing-files-with-nodejs)](#writing-files-with-nodejshttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlwriting-files-with-nodejs)
+- [Writing files with Node.js](#writing-files-with-nodejs)
   - [파일 쓰기](#파일-쓰기)
     - [파일 동기적으로 쓰기](#파일-동기적으로-쓰기)
-      - [[자주 사용하는 플래그](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#the-flags-youll-likely-use-are)](#자주-사용하는-플래그httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlthe-flags-youll-likely-use-are)
+      - [자주 사용하는 플래그](#자주-사용하는-플래그)
   - [파일에 내용 추가하기](#파일에-내용-추가하기)
-      - [[Promise를 사용한 예제](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#example-with-promises)](#promise를-사용한-예제httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlexample-with-promises)
+      - [Promise를 사용한 예제](#promise를-사용한-예제)
 
 # [Writing files with Node.js](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#writing-files-with-nodejs)
 

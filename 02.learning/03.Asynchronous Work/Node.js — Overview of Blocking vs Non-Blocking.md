@@ -5,7 +5,7 @@
   - [코드 비교](#코드-비교)
   - [동시성과 처리량](#동시성과-처리량)
   - [블로킹과 논블로킹 코드를 혼용할 때의 위험성](#블로킹과-논블로킹-코드를-혼용할-때의-위험성)
-  - [[추가 리소스](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#additional-resources)](#추가-리소스httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controladditional-resources)
+  - [추가 리소스](#추가-리소스)
 
 # 블로킹 vs 논블로킹 개요
 

@@ -1,8 +1,8 @@
 # Table of Contents
 
 - [사용법과 예제](#사용법과-예제)
-    - [사용법[#](https://nodejs.org/docs/latest/api/synopsis.html#usage)](#사용법httpsnodejsorgdocslatestapisynopsishtmlusage)
-    - [예제[#](https://nodejs.org/docs/latest/api/synopsis.html#example)](#예제httpsnodejsorgdocslatestapisynopsishtmlexample)
+    - [사용법](#사용법)
+    - [예제](#예제)
 
 # 사용법과 예제
 

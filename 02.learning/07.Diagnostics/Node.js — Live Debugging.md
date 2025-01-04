@@ -1,7 +1,7 @@
 # Table of Contents
 
-- [[실시간 디버깅](https://nodejs.org/en/learn/modules/publishing-a-package#live-debugging)](#실시간-디버깅httpsnodejsorgenlearnmodulespublishing-a-packagelive-debugging)
-  - [[My application doesn’t behave as expected](https://nodejs.org/en/learn/modules/publishing-a-package#my-application-doesnt-behave-as-expected)](#my-application-doesnt-behave-as-expectedhttpsnodejsorgenlearnmodulespublishing-a-packagemy-application-doesnt-behave-as-expected)
+- [실시간 디버깅](#실시간-디버깅)
+  - [My application doesn’t behave as expected](#my-application-doesnt-behave-as-expected)
     - [증상](#증상)
     - [디버깅](#디버깅)
 

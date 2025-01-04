@@ -1,6 +1,6 @@
 # Table of Contents
 
-- [[Node.js 파일 상태 정보](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#nodejs-file-stats)](#nodejs-파일-상태-정보httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlnodejs-file-stats)
+- [Node.js 파일 상태 정보](#nodejs-파일-상태-정보)
 
 # [Node.js 파일 상태 정보](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#nodejs-file-stats)
 

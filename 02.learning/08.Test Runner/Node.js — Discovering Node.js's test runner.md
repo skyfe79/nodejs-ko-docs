@@ -1,6 +1,6 @@
 # Table of Contents
 
-- [[Node.js 테스트 러너 알아보기](https://nodejs.org/en/learn/test-runner/introduction#discovering-nodejss-test-runner)](#nodejs-테스트-러너-알아보기httpsnodejsorgenlearntest-runnerintroductiondiscovering-nodejss-test-runner)
+- [Node.js 테스트 러너 알아보기](#nodejs-테스트-러너-알아보기)
   - [테스트 러너란 무엇인가?](#테스트-러너란-무엇인가)
   - [코드를 테스트하는 이유](#코드를-테스트하는-이유)
   - [Node.js로 테스트 실행하기](#nodejs로-테스트-실행하기)

@@ -1,13 +1,13 @@
 # Table of Contents
 
-- [[스트림에서의 백프레셔](https://nodejs.org/en/learn/modules/publishing-a-package#backpressuring-in-streams)](#스트림에서의-백프레셔httpsnodejsorgenlearnmodulespublishing-a-packagebackpressuring-in-streams)
+- [스트림에서의 백프레셔](#스트림에서의-백프레셔)
   - [데이터 처리의 문제점](#데이터-처리의-문제점)
   - [데이터가 너무 빠르게 들어올 때](#데이터가-너무-빠르게-들어올-때)
   - [가비지 컬렉션의 과도한 부하](#가비지-컬렉션의-과도한-부하)
   - [메모리 소모](#메모리-소모)
   - [백프레셔가 이러한 문제를 어떻게 해결하나요?](#백프레셔가-이러한-문제를-어떻게-해결하나요)
   - [`.pipe()`의 생명주기](#pipe의-생명주기)
-  - [[백프레셔 가이드라인](https://nodejs.org/en/learn/modules/publishing-a-package#backpressure-guidelines)](#백프레셔-가이드라인httpsnodejsorgenlearnmodulespublishing-a-packagebackpressure-guidelines)
+  - [백프레셔 가이드라인](#백프레셔-가이드라인)
   - [커스텀 스트림 구현 시 지켜야 할 규칙](#커스텀-스트림-구현-시-지켜야-할-규칙)
   - [Readable Streams에 특화된 규칙](#readable-streams에-특화된-규칙)
   - [Writable Streams에 특화된 규칙](#writable-streams에-특화된-규칙)

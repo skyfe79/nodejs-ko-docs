@@ -1,9 +1,9 @@
 # Table of Contents
 
-- [[JavaScript Asynchronous Programming and Callbacks](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#javascript-asynchronous-programming-and-callbacks)](#javascript-asynchronous-programming-and-callbackshttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controljavascript-asynchronous-programming-and-callbacks)
+- [JavaScript Asynchronous Programming and Callbacks](#javascript-asynchronous-programming-and-callbacks)
   - [프로그래밍 언어에서의 비동기성](#프로그래밍-언어에서의-비동기성)
-  - [[JavaScript](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#javascript)](#javascripthttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controljavascript)
-  - [[콜백](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#callbacks)](#콜백httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlcallbacks)
+  - [JavaScript](#javascript)
+  - [콜백](#콜백)
     - [콜백에서 에러 처리하기](#콜백에서-에러-처리하기)
     - [콜백의 문제점](#콜백의-문제점)
     - [콜백 대체 방법](#콜백-대체-방법)

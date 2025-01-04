@@ -1,6 +1,6 @@
 # Table of Contents
 
-- [[사용자 여정](https://nodejs.org/en/learn/modules/publishing-a-package#user-journey)](#사용자-여정httpsnodejsorgenlearnmodulespublishing-a-packageuser-journey)
+- [사용자 여정](#사용자-여정)
 
 # [사용자 여정](https://nodejs.org/en/learn/modules/publishing-a-package#user-journey)
 

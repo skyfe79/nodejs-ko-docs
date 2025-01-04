@@ -2,7 +2,7 @@
 
 - [process.nextTick() 이해하기](#processnexttick-이해하기)
       - [이벤트 순서 예제](#이벤트-순서-예제)
-      - [[예제 출력:](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#example-output)](#예제-출력httpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlexample-output)
+      - [예제 출력:](#예제-출력)
 
 # process.nextTick() 이해하기
 

@@ -1,9 +1,9 @@
 # Table of Contents
 
-- [[Discover JavaScript Timers](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#discover-javascript-timers)](#discover-javascript-timershttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controldiscover-javascript-timers)
-  - [[`setTimeout()`](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#settimeout)](#settimeouthttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlsettimeout)
-    - [[Zero delay](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#zero-delay)](#zero-delayhttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlzero-delay)
-  - [[`setInterval()`](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#setinterval)](#setintervalhttpsnodejsorgenlearnasynchronous-workasynchronous-flow-controlsetinterval)
+- [Discover JavaScript Timers](#discover-javascript-timers)
+  - [`setTimeout()`](#settimeout)
+    - [Zero delay](#zero-delay)
+  - [`setInterval()`](#setinterval)
   - [재귀적 setTimeout](#재귀적-settimeout)
 
 # [Discover JavaScript Timers](https://nodejs.org/en/learn/asynchronous-work/asynchronous-flow-control#discover-javascript-timers)

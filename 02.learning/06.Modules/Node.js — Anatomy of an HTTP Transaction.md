@@ -2,17 +2,17 @@
 
 - [HTTP 트랜잭션의 구조](#http-트랜잭션의-구조)
   - [서버 생성하기](#서버-생성하기)
-  - [[메서드, URL 및 헤더](https://nodejs.org/en/learn/modules/publishing-a-package#method-url-and-headers)](#메서드-url-및-헤더httpsnodejsorgenlearnmodulespublishing-a-packagemethod-url-and-headers)
-  - [[Request Body](https://nodejs.org/en/learn/modules/publishing-a-package#request-body)](#request-bodyhttpsnodejsorgenlearnmodulespublishing-a-packagerequest-body)
-  - [[에러에 대한 간단한 설명](https://nodejs.org/en/learn/modules/publishing-a-package#a-quick-thing-about-errors)](#에러에-대한-간단한-설명httpsnodejsorgenlearnmodulespublishing-a-packagea-quick-thing-about-errors)
-  - [[지금까지의 내용](https://nodejs.org/en/learn/modules/publishing-a-package#what-weve-got-so-far)](#지금까지의-내용httpsnodejsorgenlearnmodulespublishing-a-packagewhat-weve-got-so-far)
-  - [[HTTP 상태 코드](https://nodejs.org/en/learn/modules/publishing-a-package#http-status-code)](#http-상태-코드httpsnodejsorgenlearnmodulespublishing-a-packagehttp-status-code)
+  - [메서드, URL 및 헤더](#메서드-url-및-헤더)
+  - [Request Body](#request-body)
+  - [에러에 대한 간단한 설명](#에러에-대한-간단한-설명)
+  - [지금까지의 내용](#지금까지의-내용)
+  - [HTTP 상태 코드](#http-상태-코드)
   - [응답 헤더 설정하기](#응답-헤더-설정하기)
   - [헤더 데이터 명시적으로 보내기](#헤더-데이터-명시적으로-보내기)
   - [응답 본문 전송하기](#응답-본문-전송하기)
   - [에러에 대한 또 다른 간단한 설명](#에러에-대한-또-다른-간단한-설명)
-  - [[모든 것을 합쳐보기](https://nodejs.org/en/learn/modules/publishing-a-package#put-it-all-together)](#모든-것을-합쳐보기httpsnodejsorgenlearnmodulespublishing-a-packageput-it-all-together)
-  - [[에코 서버 예제](https://nodejs.org/en/learn/modules/publishing-a-package#echo-server-example)](#에코-서버-예제httpsnodejsorgenlearnmodulespublishing-a-packageecho-server-example)
+  - [모든 것을 합쳐보기](#모든-것을-합쳐보기)
+  - [에코 서버 예제](#에코-서버-예제)
 
 # HTTP 트랜잭션의 구조
 
